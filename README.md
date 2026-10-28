@@ -89,7 +89,7 @@ De REST-endpoints en voorbeeldrequests staan in [documentation/api.md](documenta
 
 | Stap | Werk | Status |
 | --- | --- | --- |
-| 1 | Cursusmateriaal en Davids voorbeelden bekijken | Klaar |
+| 1 | Cursusmateriaal en de leerkrachts voorbeelden bekijken | Klaar |
 | 2 | Spring Boot Maven-backend opzetten met de mapindeling van `demoSnackbar` | Klaar |
 | 3 | Boeken, gebruikersprofielen, reviews en reserveringen modelleren met JPA | Klaar |
 | 4 | REST-endpoints voor catalogus, profielen, reserveringen en reviews toevoegen | Klaar |
