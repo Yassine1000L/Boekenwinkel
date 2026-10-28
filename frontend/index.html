@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boekenwinkel | Bladwijzer</title>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="script.js?v=7" defer></script>
+</head>
+<body>
+<header class="topbar">
+    <a class="logo" href="#catalogus" id="home-link"><span class="logo-mark">b.</span> bladwijzer</a>
+    <nav>
+        <button class="nav-button active" id="shop-button">Boeken</button>
+        <button class="nav-button" id="profile-button" hidden>Mijn profiel</button>
+        <button class="nav-button notification-button" id="notification-button" aria-label="Berichten" title="Berichten" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+            <span id="notification-count" class="notification-count" hidden></span>
+        </button>
+        <button class="nav-button" id="admin-button">Admin</button>
+        <button class="nav-button" id="admin-dashboard-button" hidden>Admin dashboard</button>
+        <button class="nav-button" id="login-button">Inloggen</button>
+        <button class="nav-button" id="logout-button" hidden>Uitloggen</button>
+    </nav>
+</header>
+
+<main>
+    <div id="notice" class="notice" role="status" hidden></div>
+
+    <div id="reservation-confirmation" class="confirmation-overlay" role="dialog" aria-modal="true" aria-labelledby="confirmation-title" hidden>
+        <div class="confirmation-box">
+            <p class="eyebrow">BEVESTIG RESERVERING</p>
+            <h2 id="confirmation-title">Wil je dit boek reserveren?</h2>
+            <p id="confirmation-message" class="muted"></p>
+            <div class="confirmation-actions">
+                <button id="confirm-reservation" class="button button-dark" type="button">Ja, reserveren</button>
+                <button id="cancel-reservation" class="button button-coral" type="button">Nee, annuleren</button>
+            </div>
+        </div>
+    </div>
+
+    <section id="catalogus" class="page">
+        <div class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">JOUW VOLGENDE FAVORIETE BOEK</p>
+                <h1>Een goed boek<br>blijft nog even.</h1>
+                <p class="hero-text">Ontdek verhalen om mee naar huis te nemen. Zoek in onze catalogus en reserveer je keuze.</p>
+                <a class="button button-dark" href="#boeken">Bekijk de boeken <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="sun"></div>
+                <div class="book-stack"><div class="book book-one"></div><div class="book book-two"></div><div class="book book-three"></div></div>
+                <span class="art-spark">✳</span>
+            </div>
+            <div class="hero-number">LEZEN IS REIZEN · 2026</div>
+        </div>
+
+        <section id="boeken" class="catalog-section">
+            <div class="section-heading">
+                <div><p class="eyebrow">DE WINKEL</p><h2>Boeken om te ontdekken</h2></div>
+                <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Zoek op titel of auteur" aria-label="Zoek op titel of auteur"></label>
+            </div>
+            <p id="book-count" class="muted"></p>
+            <div id="book-list" class="book-grid"></div>
+            <p id="empty-books" class="empty-message" hidden>We konden geen boeken vinden.</p>
+        </section>
+    </section>
+
+    <section id="details" class="page detail-page" hidden>
+        <button class="back-button" id="back-button">← Terug naar boeken</button>
+        <div id="book-details"></div>
+        <section class="reviews-section">
+            <p class="eyebrow">VAN LEZERS</p><h2>Reviews</h2>
+            <div id="review-list" class="review-list"></div>
+            <p id="empty-reviews" class="muted" hidden>Er zijn nog geen reviews voor dit boek.</p>
+        </section>
+    </section>
+
+    <section id="account" class="page account-page" hidden>
+        <div class="account-intro"><p class="eyebrow">FIJN DAT JE ER BENT</p><h1>Welkom bij<br>bladwijzer.</h1><p>Log in om boeken te reserveren, of maak een profiel aan.</p></div>
+        <div class="account-forms">
+            <form id="login-form" class="form-card">
+                <p class="eyebrow">AL EEN PROFIEL?</p><h2>Inloggen</h2>
+                <label>E-mailadres<input name="email" type="email" required autocomplete="email"></label>
+                <label>Wachtwoord<input name="password" type="password" required autocomplete="current-password"></label>
+                <button class="button button-dark" type="submit">Inloggen</button>
+            </form>
+            <form id="register-form" class="form-card">
+                <p class="eyebrow">NIEUW BIJ ONS?</p><h2>Profiel maken</h2>
+                <label>Naam<input name="name" required autocomplete="name"></label>
+                <label>E-mailadres<input name="email" type="email" required autocomplete="email"></label>
+                <label>Wachtwoord<input name="password" type="password" required autocomplete="new-password"></label>
+                <button class="button button-coral" type="submit">Registreren</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="admin-login" class="page admin-login-page" hidden>
+        <div class="account-intro"><p class="eyebrow">WINKELBEHEER</p><h1>Admin<br>inloggen.</h1><p>Log in om reserveringen te bekijken en af te handelen.</p></div>
+        <form id="admin-login-form" class="form-card">
+            <p class="eyebrow">ADMINISTRATOR</p><h2>Admin login</h2>
+            <label>E-mailadres<input name="email" type="email" required autocomplete="username"></label>
+            <label>Wachtwoord<input name="password" type="password" required autocomplete="current-password"></label>
+            <button class="button button-dark" type="submit">Inloggen als admin</button>
+        </form>
+    </section>
+
+    <section id="admin-dashboard" class="page admin-page" hidden>
+        <div class="profile-heading"><div><p class="eyebrow">WINKELBEHEER</p><h1>Reserveringen</h1><p class="muted">Keur reserveringen goed of wijs ze af.</p></div></div>
+        <p id="no-pending-admin-reservations" class="empty-message" hidden>Er wachten geen reserveringen op beoordeling. Maak als klant een nieuwe reservering; dan verschijnen hier de knoppen Goedkeuren en Afwijzen.</p>
+        <div id="admin-reservation-list" class="reservation-list"></div>
+        <p id="empty-admin-reservations" class="empty-message" hidden>Er zijn nog geen reserveringen.</p>
+    </section>
+
+    <section id="profile" class="page profile-page" hidden>
+        <div class="profile-heading"><div><p class="eyebrow">JOUW BLADWIJZER</p><h1 id="profile-name">Mijn profiel</h1><p id="profile-email" class="muted"></p></div><div class="profile-stamp">LEZER<br>SINDS 2026</div></div>
+        <section class="profile-block"><div class="section-heading"><div><p class="eyebrow">OPZIJ GELEGD</p><h2>Mijn reserveringen</h2></div></div><div id="reservation-list" class="reservation-list"></div><p id="empty-reservations" class="muted" hidden>Je hebt nog geen reserveringen.</p></section>
+        <section class="profile-block"><div class="section-heading"><div><p class="eyebrow">IN JE BOEKENKAST</p><h2>Mijn gekochte boeken</h2></div></div><div id="purchased-list" class="purchased-list"></div><p id="empty-purchases" class="muted" hidden>Je hebt nog geen gekochte boeken in je profiel.</p></section>
+        <form id="review-form" class="form-card review-form" hidden>
+            <p class="eyebrow">DEEL JE MENING</p><h2>Schrijf een review</h2>
+            <label>Boek<select name="isbn" id="review-book" required></select></label>
+            <label>Score<select name="score" required><option value="5">5 - Geweldig</option><option value="4">4 - Heel goed</option><option value="3">3 - Goed</option><option value="2">2 - Viel tegen</option><option value="1">1 - Niet mijn boek</option><option value="0">0</option></select></label>
+            <label>Review<textarea name="description" minlength="3" maxlength="180" required rows="4"></textarea></label>
+            <button class="button button-dark" type="submit">Review plaatsen</button>
+        </form>
+    </section>
+
+    <section id="notifications" class="page notifications-page" hidden>
+        <div class="profile-heading"><div><p class="eyebrow">WINKELBERICHTEN</p><h1>Berichten</h1><p class="muted">Hier zie je wanneer je boeken klaarstaan.</p></div></div>
+        <div id="notification-list" class="notification-list"></div>
+        <p id="empty-notifications" class="empty-message" hidden>Je hebt nog geen berichten.</p>
+    </section>
+</main>
+
+<footer><a class="logo" href="#catalogus"><span class="logo-mark">b.</span> bladwijzer</a><p>Een winkel vol verhalen.</p><span>© 2026 Bladwijzer</span></footer>
+</body>
+</html>
